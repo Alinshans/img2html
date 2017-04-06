@@ -44,10 +44,10 @@ TEMPLATE = '''
 
 class Img2HTMLConverter(object):
     def __init__(self,
-                 font_size=10,
-                 char='䦗',
+                 font_size=4,
+                 char='爱',
                  background='#000000',
-                 title='img2html by xlzd',
+                 title='Image',
                  font_family='monospace'):
         self.font_size = font_size
         self.background = background
