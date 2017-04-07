@@ -53,7 +53,7 @@ def main():
     ###########################################################################
 
         if out_file == None:
-            nameRe = re.compile(r'(\w+).(\w+)')
+            nameRe = re.compile(r'(.+)\.(\w+)')
             out_file = nameRe.search(src_file).group(1) + '.html'
 
         with codecs.open(out_file, 'wb', encoding='utf-8') as fp:
