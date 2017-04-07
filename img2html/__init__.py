@@ -61,5 +61,5 @@ def main():
 
     else:
         print('usage: img2html [-h] [-b #RRGGBB] [-s 1~32] [-c CHAR] [-t TITLE] [-f FONT]')
-        print( '               [-i SRC_FILE] [-o OUT_FILE]')
+        print('                [-i SRC_FILE] [-o OUT_FILE]')
         print('Type "img2html -h" for help information')
