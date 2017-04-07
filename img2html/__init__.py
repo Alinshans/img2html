@@ -54,7 +54,7 @@ def main():
 
         if out_file == None:
             nameRe = re.compile(r'(\w)+.(\w)+')
-            out_name = nameRe.search(getattr(args, 'in')).group(1) + '.html'
+            out_file = nameRe.search(src_file).group(1) + '.html'
 
         with codecs.open(out_file, 'wb', encoding='utf-8') as fp:
             fp.write(html)
