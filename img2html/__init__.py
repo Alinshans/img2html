@@ -21,19 +21,20 @@ def main():
                         help='html title')
     parser.add_argument('-f', '--font', default='monospace', metavar='FONT',
                         help='html font')
-    parser.add_argument('-i', '--in', default=None, metavar='IN',
+    parser.add_argument('-i', '--in', default=None, metavar='SRC_FILE',
                         help='the image to convert')
-    parser.add_argument('-o', '--out', default=None, metavar='OUT',
+    parser.add_argument('-o', '--out', default=None, metavar='OUT_FILE',
                         help='output file')
 
     args, text = parser.parse_known_args()
 
+    ###########################################################################
+    # Modifies here to run code.
+
+    # src_file = **source_file** (e.g. 'a.JPG')
     src_file = getattr(args, 'in')
 
     if src_file:
-
-        ###########################################################################
-        # Modifies here to run code.
 
         # Sets the conversion configuration information.
         converter_config = Img2HTMLConverter(
@@ -44,16 +45,21 @@ def main():
             font_family=args.font,
         )
 
-        # html = converter_config.convert(**source_file**) (e.g. 'a.JPG')
-        html = converter_config.convert(getattr(args, 'in'))
+        html = converter_config.convert(src_file)
 
         # out_file = **output_file_name** (e.g. 'a.html')
         out_file = args.out
 
-        ###########################################################################
+    ###########################################################################
+
         if out_file == None:
             nameRe = re.compile(r'(\w)+.(\w)+')
             out_name = nameRe.search(getattr(args, 'in')).group(1) + '.html'
 
         with codecs.open(out_file, 'wb', encoding='utf-8') as fp:
             fp.write(html)
+
+    else:
+        print('usage: img2html [-h] [-b #RRGGBB] [-s 1~32] [-c CHAR] [-t TITLE] [-f FONT]'
+               '                [-i SRC_FILE] [-o OUT_FILE]'
+               'Type "img2html -h" for help information')
