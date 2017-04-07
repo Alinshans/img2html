@@ -31,7 +31,7 @@ def main():
     ###########################################################################
     # Modifies here to run code.
 
-    # src_file = **source_file** (e.g. 'a.JPG')
+    # src_file = **source_file** (e.g. 'a.jpg')
     src_file = getattr(args, 'in')
 
     if src_file:
@@ -53,7 +53,7 @@ def main():
     ###########################################################################
 
         if out_file == None:
-            nameRe = re.compile(r'(\w)+.(\w)+')
+            nameRe = re.compile(r'(\w+).(\w+)')
             out_file = nameRe.search(src_file).group(1) + '.html'
 
         with codecs.open(out_file, 'wb', encoding='utf-8') as fp:
