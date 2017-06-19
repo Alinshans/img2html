@@ -31,11 +31,15 @@ def main():
     ###########################################################################
     # Modifies here to run code.
 
-    # src_file = **source_file** (e.g. 'a.jpg')
+    # Directly sets to input path, e.g.:
+    #src_file = 'D:\\a.jpg'
     src_file = getattr(args, 'in')
 
-    if src_file:
+    # Directly sets to output path, e.g.:
+    #out_file = 'D:\\a.html'
+    out_file = args.out
 
+    if src_file:
         # Sets the conversion configuration information.
         converter_config = Img2HTMLConverter(
             font_size=args.size,
@@ -44,22 +48,18 @@ def main():
             title=args.title,
             font_family=args.font,
         )
-
         html = converter_config.convert(src_file)
-
-        # out_file = **output_file_name** (e.g. 'a.html')
-        out_file = args.out
-
     ###########################################################################
-
         if out_file == None:
             nameRe = re.compile(r'(.+)\.(\w+)')
             out_file = nameRe.search(src_file).group(1) + '.html'
-
         with codecs.open(out_file, 'wb', encoding='utf-8') as fp:
             fp.write(html)
-
+            print("\nSuccessfully converting " + src_file + " to " + out_file)
     else:
         print('usage: img2html [-h] [-b #RRGGBB] [-s 1~32] [-c CHAR] [-t TITLE] [-f FONT]')
         print('                [-i SRC_FILE] [-o OUT_FILE]')
         print('Type "img2html -h" for help information')
+
+if __name__ == '__main__':
+    main()
